@@ -1,0 +1,13 @@
+PREFIX sa:<http://www.sensoractivities.org/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX : <http://www.w3.org/2000/01/rdf-schema#>
+select  ?content #?start ?end 
+		 where
+{
+    ?obs rdf:type sa:observation.
+    ?obs sa:start ?start.FILTER  ( ?start > "2014-05-05T18:34:54.000"^^xsd:dateTime  ).
+    ?obs sa:end ?end.FILTER(?end < "2014-05-05T18:55:40.000"^^xsd:dateTime  )
+    ?obs sa:content ?content
+} 
+order by ?start

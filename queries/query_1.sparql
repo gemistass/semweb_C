@@ -1,0 +1,12 @@
+PREFIX sa:<http://www.sensoractivities.org/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+select  ?Activity ?starts ?ends where{
+    ?activities sa:content ?Activity  ;
+                sa:start ?starts ;
+                sa:end ?ends
+    {
+        select    ?activities  where {
+            ?activities rdf:type sa:activity 
+        }
+    }
+}
